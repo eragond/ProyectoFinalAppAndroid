@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/top">
+
+    <fragment
+        android:id="@+id/favoritos"
+        android:name="com.example.tarea3.fragmentos.Favoritos"
+        android:label="@string/favoritos"
+        tools:layout="@layout/fragment_favoritos" />
+    <fragment
+        android:id="@+id/top"
+        android:name="com.example.tarea3.fragmentos.comunes.TopFragment"
+        android:label="@string/top"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/lunesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.LunesFragment"
+        android:label="@string/lunes"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/martesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.MartesFragment"
+        android:label="@string/martes"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/miercolesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.MiercolesFragment"
+        android:label="@string/miercoles"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/juevesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.JuevesFragment"
+        android:label="@string/jueves"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/viernesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.ViernesFragment"
+        android:label="@string/viernes"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/sabadoNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.SabadoFragment"
+        android:label="@string/sabado"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/domingoNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.DomingoFragment"
+        android:label="@string/domingo"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/diosNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.DiosFragment"
+        android:label="@string/dios"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/humorNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.HumorFragment"
+        android:label="@string/humor"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/nochesNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.NochesFragment"
+        android:label="@string/noches"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/piolinNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.PiolinFragment"
+        android:label="@string/piolin"
+        tools:layout="@layout/fragment_recycler_grid" />
+    <fragment
+        android:id="@+id/floresNavFrag"
+        android:name="com.example.tarea3.fragmentos.comunes.FloresFragment"
+        android:label="@string/flores"
+        tools:layout="@layout/fragment_recycler_grid" />
+
+
+</navigation>

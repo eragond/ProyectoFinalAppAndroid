@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.Tarea3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="20"
+    tools:context=".actividades.VistaImagenGrande">
+
+
+    <ImageView
+        android:id="@+id/imagenGrande"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="18"
+        android:src="@mipmap/ic_launcher_round"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/linearLakos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1" >
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:text="@string/share"
+            />
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btnFav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:text="@string/favoritos" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Buen dia!</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Buenos dias</string>
+    <string name="nav_header_subtitle">Hoy te espera un gran dia!!</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="top">Top</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="buenos_dias">Buenos Dias</string>
+    <string name="share">Compartir</string>
+    <string name="save">Guardar</string>
+
+    <string name="lunes">Lunes</string>
+    <string name="martes">Martes</string>
+    <string name="miercoles">Miercoles</string>
+    <string name="jueves">Jueves</string>
+    <string name="viernes">Viernes</string>
+    <string name="sabado">Sabado</string>
+    <string name="domingo">Domingo</string>
+    <string name="dios">Dios</string>
+    <string name="humor">Humor</string>
+    <string name="flores">Flores</string>
+    <string name="piolin">Piolin</string>
+    <string name="noches">Noches</string>
+
+</resources>

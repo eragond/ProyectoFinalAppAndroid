@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/favoritos"
+            android:icon="@drawable/ic_baseline_favorite_24"
+            android:title="@string/favoritos" />
+        <item
+            android:id="@+id/top"
+            android:icon="@drawable/ic_baseline_thumb_up_24"
+            android:title="@string/top" />
+        <item
+            android:id="@+id/lunesNavFrag"
+            android:icon="@drawable/ic_baseline_filter_1_24"
+            android:title="@string/lunes" />
+        <item
+            android:id="@+id/martesNavFrag"
+            android:icon="@drawable/ic_baseline_filter_2_24"
+            android:title="@string/martes" />
+        <item
+            android:id="@+id/miercolesNavFrag"
+            android:icon="@drawable/ic_baseline_filter_3_24"
+            android:title="@string/miercoles" />
+        <item
+            android:id="@+id/juevesNavFrag"
+            android:icon="@drawable/ic_baseline_filter_4_24"
+            android:title="@string/jueves" />
+        <item
+            android:id="@+id/viernesNavFrag"
+            android:icon="@drawable/ic_baseline_filter_5_24"
+            android:title="@string/viernes" />
+        <item
+            android:id="@+id/sabadoNavFrag"
+            android:icon="@drawable/ic_baseline_filter_6_24"
+            android:title="@string/sabado" />
+        <item
+            android:id="@+id/domingoNavFrag"
+            android:icon="@drawable/ic_baseline_filter_7_24"
+            android:title="@string/domingo" />
+        <item
+            android:id="@+id/diosNavFrag"
+            android:icon="@drawable/ic_baseline_self_improvement_24"
+            android:title="@string/dios" />
+        <item
+            android:id="@+id/humorNavFrag"
+            android:icon="@drawable/ic_baseline_tag_faces_24"
+            android:title="@string/humor" />
+        <item
+            android:id="@+id/nochesNavFrag"
+            android:icon="@drawable/ic_baseline_nights_stay_24"
+            android:title="@string/noches" />
+        <item
+            android:id="@+id/piolinNavFrag"
+            android:icon="@drawable/buen_dia"
+            android:title="@string/piolin" />
+        <item
+            android:id="@+id/floresNavFrag"
+            android:icon="@drawable/ic_baseline_local_florist_24"
+            android:title="@string/flores" />
+
+    </group>
+</menu>
