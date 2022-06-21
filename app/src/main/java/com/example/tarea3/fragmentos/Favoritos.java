@@ -57,7 +57,6 @@ public class Favoritos extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recycler = (RecyclerView) view.findViewById(R.id.recyclerFavoritosVista);
-        //recycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
 
 

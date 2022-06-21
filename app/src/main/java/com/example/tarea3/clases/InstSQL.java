@@ -15,17 +15,11 @@ public final class InstSQL {
     public static final String INSERT_FAVORITOS = "INSERT OR IGNORE INTO " + N_TABLE +
                                 " ( " + RUTA + " )  VALUES ( \'";
 
-    public static final String REMOVE_FAV = "DELETE FROM " + N_TABLE + " WHERE " + RUTA + " = \'";
-
     public static final String TRAE_RUTAS = "SELECT " + RUTA + " FROM " + N_TABLE;
 
 
     public static String insertFavoritoRuta(String ruta) {
         return INSERT_FAVORITOS + ruta + "\' )";
-    }
-
-    public static String removeFavoritoRuta(String ruta) {
-        return REMOVE_FAV + ruta + "\'";
     }
 
 }

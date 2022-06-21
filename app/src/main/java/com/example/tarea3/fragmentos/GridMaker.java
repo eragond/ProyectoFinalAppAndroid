@@ -115,6 +115,5 @@ public class GridMaker extends Fragment implements Response.Listener<JSONObject>
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getContext(), "No se respondio bien", Toast.LENGTH_LONG).show();
         dialog.hide();
-        Log.e("ERROR_RESPONSE: ", error.toString());
     }
 }

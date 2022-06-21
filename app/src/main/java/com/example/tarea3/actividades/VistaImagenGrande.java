@@ -80,14 +80,11 @@ public class VistaImagenGrande extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Agregado a favoritos ", Toast.LENGTH_LONG).show();
-                Log.d("KLIcADO", "Insertando");
                 ConexionSQLiteHelper conn = new ConexionSQLiteHelper(view.getContext());
                 SQLiteDatabase db = conn.getWritableDatabase();
                 String ints = InstSQL.insertFavoritoRuta(ruta);
-                Log.d("ASD", ints);
                 db.execSQL(ints);
                 db.close();
-                Log.d("KLIcADO", "Insertado");
             }
         });
 
