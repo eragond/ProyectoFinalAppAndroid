@@ -4,7 +4,7 @@ public final class Url {
     private Url(){}
 
     // public static final String BASE_URL = "http://10.0.2.2:3000"; // Localhost
-    public static final String BASE_URL = "https://serverpitero.herokuapp.com";
+    public static final String BASE_URL = "https://serverpitero.herokuapp.com"; //Remoto
     public static final String LUNES = "Lunes";
     public static final String MARTES = "Martes";
     public static final String MIERCOLES = "Miercoles";

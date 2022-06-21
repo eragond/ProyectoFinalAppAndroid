@@ -1,7 +1,5 @@
 package com.example.tarea3.clases;
 
-import android.security.AppUriAuthenticationPolicy;
-
 public final class InstSQL {
     private InstSQL() {}
 
@@ -13,13 +11,13 @@ public final class InstSQL {
                                 " (" + RUTA + " TEXT, UNIQUE( " + RUTA + " ))";
     public static final String BORRA_TABLA_IMGFAV = "DROP TABLE IF EXISTS " + N_TABLE;
     public static final String INSERT_FAVORITOS = "INSERT OR IGNORE INTO " + N_TABLE +
-                                " ( " + RUTA + " )  VALUES ( \'";
+                                " ( " + RUTA + " )  VALUES ( '";
 
     public static final String TRAE_RUTAS = "SELECT " + RUTA + " FROM " + N_TABLE;
 
 
     public static String insertFavoritoRuta(String ruta) {
-        return INSERT_FAVORITOS + ruta + "\' )";
+        return INSERT_FAVORITOS + ruta + "' )";
     }
 
 }

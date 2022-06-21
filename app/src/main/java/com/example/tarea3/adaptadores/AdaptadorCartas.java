@@ -4,12 +4,10 @@ import static com.example.tarea3.clases.Url.BASE_URL;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,8 +22,6 @@ import com.example.tarea3.R;
 import com.example.tarea3.clases.CartaImagen;
 
 import java.util.ArrayList;
-
-import javax.xml.transform.ErrorListener;
 
 public class AdaptadorCartas extends RecyclerView.Adapter<AdaptadorCartas.ViewHolderCartas>
         implements View.OnClickListener{
@@ -50,9 +46,8 @@ public class AdaptadorCartas extends RecyclerView.Adapter<AdaptadorCartas.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderCartas holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderCartas holder, int position) {
         String url = BASE_URL + "/" + listImagenes.get(position).getRuta();
-        //Log.d("ruta", url);
 
         ImageRequest imgReq = new ImageRequest(url, new Response.Listener<Bitmap>() {
             @Override

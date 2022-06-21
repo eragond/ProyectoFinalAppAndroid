@@ -1,20 +1,21 @@
 package com.example.tarea3.actividades;
 
-import static com.example.tarea3.clases.InstSQL.NOMBRE_DB;
 import static com.example.tarea3.clases.Url.BASE_URL;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,9 +31,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.tarea3.R;
 import com.example.tarea3.clases.ConexionSQLiteHelper;
 import com.example.tarea3.clases.InstSQL;
-import com.google.android.material.snackbar.Snackbar;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,7 +38,7 @@ import java.io.FileOutputStream;
 public class VistaImagenGrande extends AppCompatActivity {
 
     ImageView imgGde;
-    Button share, fav;
+    Button share, fav, save;
     RequestQueue request;
     String ruta;
 
@@ -52,11 +50,14 @@ public class VistaImagenGrande extends AppCompatActivity {
         imgGde = findViewById(R.id.imagenGrande);
         share = findViewById(R.id.btnShare);
         fav = findViewById(R.id.btnFav);
+        save = findViewById(R.id.btnSave);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
         Bundle extras = getIntent().getExtras();
+        if (extras.getBoolean("inFavorites"))
+            fav.setVisibility(View.GONE);
 
         ruta = extras.getString("fotoRuta");
         String url = BASE_URL + "/" + ruta;
@@ -79,12 +80,12 @@ public class VistaImagenGrande extends AppCompatActivity {
         fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Agregado a favoritos ", Toast.LENGTH_LONG).show();
                 ConexionSQLiteHelper conn = new ConexionSQLiteHelper(view.getContext());
                 SQLiteDatabase db = conn.getWritableDatabase();
                 String ints = InstSQL.insertFavoritoRuta(ruta);
                 db.execSQL(ints);
                 db.close();
+                Toast.makeText(view.getContext(), "Agregado a favoritos ", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -105,6 +106,16 @@ public class VistaImagenGrande extends AppCompatActivity {
             }
         });
 
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("SAVE", "El peluca sabeeeee");
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) imgGde.getDrawable();
+                Bitmap bitmap = bitmapDrawable.getBitmap();
+                saveToGallery(bitmap);
+            }
+        });
+
 
     }
 
@@ -121,10 +132,35 @@ public class VistaImagenGrande extends AppCompatActivity {
             outputStream.close();
             uri = FileProvider.getUriForFile(this, "com.example.tarea3.fileprovider", file);
         } catch (Exception e) {
-            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
         return uri;
     }
+
+    private void saveToGallery(Bitmap btm) {
+        if (android.os.Build.VERSION.SDK_INT < 29)
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 225);
+
+        MediaStore.Images.Media.insertImage(getContentResolver(), btm, "" , "");
+        Toast.makeText(this, "Imagen guardada", Toast.LENGTH_LONG).show();
+
+        /*
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath());
+        File salida = new File(storageDir, timeStamp+"buen_dia.png");
+        try {
+            FileOutputStream out = new FileOutputStream(salida);
+            btm.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "La imagen no pudo ser guardada" + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        */
+
+    }
+
 
 
     @Override
@@ -134,5 +170,4 @@ public class VistaImagenGrande extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

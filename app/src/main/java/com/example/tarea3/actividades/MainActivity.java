@@ -1,11 +1,12 @@
 package com.example.tarea3.actividades;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
 import com.example.tarea3.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -17,10 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tarea3.databinding.ActivityMainBinding;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+
+    private static MediaPlayer gallo;
+    private static MediaPlayer musica;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,17 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (musica.isPlaying()) {
+                    musica.pause();
+                    binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+                } else {
+                    musica.start();
+                    binding.appBarMain.fab.setImageResource(R.drawable.ic_baseline_pause_24);
+                }
+
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -51,12 +63,30 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        // Inicio del media
+        gallo = MediaPlayer.create(this, R.raw.rooster);
+        musica = MediaPlayer.create(this, R.raw.loving_you);
+
+        musica.start();
+        musica.setLooping(true);
+        gallo.start();
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem croco = menu.findItem(R.id.botonGallo);
+        croco.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                gallo.start();
+                return true;
+            }
+        });
         return true;
     }
 
@@ -66,4 +96,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

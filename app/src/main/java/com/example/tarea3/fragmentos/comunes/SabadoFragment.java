@@ -1,6 +1,6 @@
 package com.example.tarea3.fragmentos.comunes;
 
-import static com.example.tarea3.clases.Url.VIERNES;
+import static com.example.tarea3.clases.Url.SABADO;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ public class SabadoFragment extends GridMaker {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        this.suburl = VIERNES;
+        this.suburl = SABADO;
         return view;
     }
 }

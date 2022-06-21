@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -46,7 +44,6 @@ public class GridMaker extends Fragment implements Response.Listener<JSONObject>
 
     private ProgressDialog dialog;
     private RequestQueue request;
-    private JsonObjectRequest jsonObjReq;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,11 +55,11 @@ public class GridMaker extends Fragment implements Response.Listener<JSONObject>
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        recycler = (RecyclerView) view.findViewById(R.id.recyclerGrid);
+        recycler = view.findViewById(R.id.recyclerGrid);
         recycler.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
-        listImagen = new ArrayList<CartaImagen>();
-        request = Volley.newRequestQueue(getContext());
+        listImagen = new ArrayList<>();
+        request = Volley.newRequestQueue(view.getContext());
 
         cargarWebService();
 
@@ -77,13 +74,13 @@ public class GridMaker extends Fragment implements Response.Listener<JSONObject>
         dialog.show();
 
         String url = BASE_URL + "/" + suburl;
-        jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjReq);
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        CartaImagen imga = null;
+        CartaImagen imga;
         try {
             JSONArray jarra = response.getJSONArray("imagenes");
             for (int i = 0; i < jarra.length(); i++) {
@@ -96,7 +93,7 @@ public class GridMaker extends Fragment implements Response.Listener<JSONObject>
             Toast.makeText(getContext(), "El json response no fue parceable", Toast.LENGTH_LONG).show();
         }
         dialog.hide();
-        Toast.makeText(getContext(), "Respuesta correcta", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Respuesta correcta", Toast.LENGTH_LONG).show();
 
         adaptador.notifyDataSetChanged();
 
